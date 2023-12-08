@@ -21,16 +21,6 @@ $(".btn").on("click", function(){
       checkAnswer(userClickedPattern.length - 1);
 })
 
-$(".btn").on("click touchstart", function() {
-      var userChosenColour = $(this).attr('id');
-      userClickedPattern.push(userChosenColour);
-      playSound(userChosenColour);
-      animatePress(userChosenColour);
-      checkAnswer(userClickedPattern.length - 1);
-    });
-    
-
-
 function nextSequence(){
       var randomNumber = Math.floor(Math.random()* 3);
       
@@ -66,7 +56,7 @@ function checkAnswer(currentLevelIndex){
             $('body').removeClass('game-over');
           }, 200);
           $('h1').text("Game Over  Press Any Key To Restart");
-          gamePattern.length = 0;
+          gamePattern = [];
           gameStarted = false;
           level = 0
           return; // Exit the function if there's a mismatch
@@ -79,6 +69,6 @@ function checkAnswer(currentLevelIndex){
         setTimeout(function() {
           nextSequence();
         }, 1000);
-        userClickedPattern.length = 0;
+        userClickedPattern = [];
       }
     }
